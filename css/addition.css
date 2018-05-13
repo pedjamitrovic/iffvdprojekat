@@ -1,3 +1,19 @@
 .navbar { margin: 0px; -webkit-border-radius: 0; -moz-border-radius: 0; border-radius: 0; }
-.navbar-inverse { background-color: #3f3f3f; }
+.navbar.navbar-inverse.center, .dropdown-menu {background-color: rgba(0, 0, 0, 0.75);}
 .navbar-brand { font-family: Indie Flower; }
+.navbar .container-fluid  {
+    text-align: center;
+}
+.navbar .container-fluid .nav{
+    float: none;
+    display:inline-block;
+    vertical-align: middle;
+}
+.navbar-inverse .container-fluid .navbar-nav  a:hover,
+.navbar-inverse .container-fluid .navbar-nav  a:focus {
+    background-color: rgba(255,255,255,0.1); 
+    color: rgb(255,255,255);
+}
+.navbar-inverse .container-fluid .navbar-nav a {
+    color:rgba(255,255,255,0.75);
+}
