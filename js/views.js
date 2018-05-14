@@ -117,6 +117,11 @@ class View
 	{
 		return "";
 	}
+	
+	AsPartialView()
+	{
+		return "";
+	}
 }
 
 var mainPopup;
@@ -140,3 +145,96 @@ doc.ready(function()
 	alertPopupFeed = new AlertPopupFeed(Alert.New("success", "<b>Success!</b> The job is done.", true, "modal"));
 	alertPopupFeed.Subscribe(alertPopup);
 });
+
+class MovieView extends View
+{
+	constructor
+	(
+		country,
+		title,
+		director,
+		roles,
+		trailer,
+		description,
+		length,
+		direction,
+		rating,
+		festivals,
+		montage,
+		music,
+		producer,
+		production,
+		distributer
+	)
+	{
+		super();
+		this.country = country;
+		this.title = title;
+		this.director = director;
+		this.roles = roles;
+		this.trailer = trailer;
+		this.description = description;
+		this.length = length;
+		this.direction = direction;
+		this.rating = rating;
+		this.festivals = festivals;
+		this.montage = montage;
+		this.music = music;
+		this.producer = producer;
+		this.production = production;
+		this.distributer = distributer;
+	}
+	
+	AsView()
+	{
+		return super.AsView();
+	}
+	
+	AsPartialView()
+	{
+		return "" +
+				"<div class=\"border-boxed expanded margin-lg\">" +
+					"<img src=\"storage/movies/" + this.title + "/cover.jpg\" width=\"320\" height=\"475\" style=\"float: left;\"/>" +
+					"<div style=\"padding-left: 350px;\">" +
+						"<h3 class=\"font-lg\">" + this.title + "</h3>" +
+						"<h4 class=\"font-md\">" + this.director + "</h4>" +
+						"<table class=\"table table-striped margin-lg\">" +
+							"<thead>" +
+								"<tr>" +
+									"<th scope=\"col\">Detalj</th>" +
+									"<th scope=\"col\">Vrednost</th>" +
+								"</tr>" +
+							"</thead>" +
+							"<tbody>" +
+								"<tr>" +
+									"<td class=\"text-right\">Država:</td>" +
+									"<td class=\"text-left\">" + this.country + "</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td class=\"text-right\">Trajanje:</td>" +
+									"<td class=\"text-left\">" + this.length + "</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td class=\"text-right\">Žanr:</td>" +
+									"<td class=\"text-left\">" + this.genre + "</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td class=\"text-right\">Rejting:</td>" +
+									"<td class=\"text-left\">" + this.rating + "</td>" +
+								"</tr>" +
+								"<tr>" +
+									"<td class=\"text-right\">Uloge:</td>" +
+									"<td class=\"text-left\">" + this.roles + "</td>" +
+								"</tr>" +
+							"</tbody>" +
+						"</table>" +
+						"<div>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\">Opširnije</button>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\"><i class=\"glyphicon glyphicon-heart\"></i> Omiljeni</button>" +
+						"</div>" +
+					"</div>" +
+				"</div>";
+	}
+}
+
+var movies = [];
