@@ -126,7 +126,7 @@ var loginPopupFeed;
 var registerPopupFeed;
 var alertPopupFeed;
 
-$(document).ready(function()
+doc.ready(function()
 {
 	mainPopup = new Popup(Config.mainPopupId);
 	alertPopup = new AlertPopup(Config.alertPopupId);

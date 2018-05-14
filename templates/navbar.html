@@ -1,18 +1,26 @@
-				<div class="container-fluid">
+				<script type="text/javascript">
+					$("div#navbar ul.nav li.dropdown").hover
+					(
+						function() { $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeIn(500); },
+						function() { $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeOut(500); }
+					);
+				</script>
+				
+				<div id="navbar" class="container-fluid">
 					<ul class="nav navbar-nav navbar-center">
-						<li><a href="about.html"><strong>Početna</strong></a></li>
-						<li class="dropdown dropdown-item"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><strong>O festivalu</strong></a>
+						<li><a href="index.html"><strong>Početna</strong></a></li>
+						<li class="dropdown dropdown-item">
+							<a class="dropdown-toggle" aria-expanded="false" href="kratkaistorija.html"><strong>O festivalu <b class="caret"></b></strong></a>
 							<ul class="dropdown-menu" role="menu">
-								<li><a href="kratkaistorija.html"><strong>Kratka istorija</strong></a></li>
 								<li role="presentation" class="dropdown-item"><a href="ziri.html"><strong>Žiri</strong></a></li>
 								<li role="presentation" class="dropdown-item"><a href="nagrade.html"><strong>Nagrade</strong></a></li>
 								<li role="presentation" class="dropdown-item"><a href="sponzori.html"><strong>Sponzori</strong></a></li>
 								<li role="presentation" class="dropdown-item"><a href="kontakt.html"><strong>Kontakt</strong></a></li>
 							</ul>
 						</li>
-						<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false" href="#"><strong>Program</strong></a>
+						<li class="dropdown dropdown-item">
+							<a class="dropdown-toggle" aria-expanded="false" href="#"><strong>Program <b class="caret"></b></strong></a>
 							<ul class="dropdown-menu" role="menu">
-								<li role="presentation" class="dropdown-item"><a href="#"><strong>Filmovi</strong></a></li>
 								<li role="presentation" class="dropdown-item"><a href="#"><strong>Mesta projekcija</strong></a></li>
 								<li role="presentation" class="dropdown-item"><a href="#"><strong>Prodajna mesta</strong></a></li>
 							</ul>

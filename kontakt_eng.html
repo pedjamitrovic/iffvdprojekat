@@ -22,25 +22,36 @@
 		<link rel="stylesheet" type="text/css" href="css/addition.css">
 		<link rel="stylesheet" type="text/css" href="css/layout.css">
 		<link rel="stylesheet" type="text/css" href="css/stylization.css">
+		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript" src="style-js/utility.style.js"></script>
 		<script type="text/javascript" src="style-js/fixed-dynamic.style.js"></script>
 		<script type="text/javascript" src="js/popups.js"></script>
-		<script type="text/javascript" src="js/config.js"></script>
 		<script type="text/javascript" src="js/views.js"></script>
 		
 		<link rel="icon" href="res/favicon.ico">
-		<title>IFF - O nama</title>
+		<title>IFF - Contact</title>
 	</head>
 	<body class="fillup">
 		<div id="wrapper" class="border-boxed expanded fillup">
-			<div id="top-content-fixed" class="border-boxed expanded p-fixed on-top"></div>
+			<div id="top-content-fixed" class="border-boxed expanded p-fixed on-top">
+				<header id="header-fixed" class="border-boxed expanded p-fixed top-trans-fast"></header>
+			</div>
 			<header id="header-main" class="border-boxed expanded"></header>
 			<nav id="navbar-main" class="navbar navbar-inverse center"></nav>
 			<div id="content" class="container">
-				
+
 				<!-- PAGE CONTENT START -->
+				<div id="nav-path" class="navbar text-center">
+					<ul class="breadcrumb text-center">
+						<li class="breadcrumb-item"><a class="hover-text-decor-none" href="#">Photos</a></li>
+						<li class="breadcrumb-item"><a class="hover-text-decor-none" href="#">Summer 2017</a></li>
+						<li class="breadcrumb-item"><a class="hover-text-decor-none" href="#">Italy</a></li>
+						<li class="breadcrumb-item active">Rome</li>
+					</ul>
+				</div>
+				
 				<div class="jumbotron no-padding-bottom font-rammetto-one text-center" style="background-color: inherit;">
-					<h1><span class="text-primary">A</span>bout us</h1>
+					<h1><span class="text-primary">C</span>ontact</h1>
 				</div>
 				<section id="section-main" class="border-boxed expanded padding-left-md padding-right-md">
 					<div class="row">
@@ -62,7 +73,7 @@
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
 							<article id="article-3" class="border-boxed expanded margin-bottom-md padding-md" style="min-height: 200px;">
 								<p class="no-margin font-times-new-roman font-lg text-danger"><i class="fa fa-envelope"> E-Mail</i></p>
-								<p class="no-margin font-times-new-roman font-md"><a class="hover-text-decor-none" href="mailto:#">dekanat@etf.bg.ac.rs</a></p>
+								<p class="no-margin font-times-new-roman font-md"><a class="hover-text-decor-none" href="mailto:#">iff@gmail.com</a></p>
 							</article>
 						</div>
 						<div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -76,7 +87,7 @@
 						<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
 							<h1 class="font-times-new-roman text-info">Who are we?</h1>
 							<p class="font-times-new-roman font-sm">
-								We are a small group of students who work hard on their bright ideas such as this project. This is a product of an assignment we were given to complete a certain web application of our own desire. We wanned to show our TA's how students do everything by the book and do their homework right (as this project was)!
+								We are a small group of students who work hard on their bright ideas such as this project. This is a product of an assignment we were given to complete a certain web application design. Check in with us to see our other projects!
 							</p>
 						</div>
 					</div>
@@ -85,7 +96,7 @@
 							<h1 class="font-times-new-roman text-info">Where are we?</h1>
 							<div id="map" class="border-boxed expanded solid-border border-xs border-gray rounded-xxs" style="height:500px"></div>
 							<script>function initMap() { var mapCanvas = document.getElementById("map"); var mapCenter = new google.maps.LatLng(44.805468, 20.4758449); var mapOptions = { center: mapCenter, zoom: 10, mapTypeId: google.maps.MapTypeId.HYBRID }; var map = new google.maps.Map(mapCanvas, mapOptions); var marker = new google.maps.Marker({ position: mapCenter, animation: google.maps.Animation.BOUNCE }); marker.setMap(map); }</script>
-							<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTmjv_17LFv0zZRK8TKPEY8Pghk_x2h0I0&callback=initMap" type="text/javascript"></script>
+							<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTmjv_17LFv0zZRK8TKPEY8Pghk_x2h0I&callback=initMap" type="text/javascript"></script>
 						</div>
 					</div>
 					<div class="row margin-bottom-md">

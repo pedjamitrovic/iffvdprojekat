@@ -1,16 +1,5 @@
-var win = $(window), doc = $(document);
-var body, wrapper, fixedHeader, header, navbar, content, footer;
-
 doc.ready(function()
 {
-    body = $(document.body);
-	fixedHeader = $("body > #wrapper > #top-content-fixed > #header-fixed");
-	wrapper = $("body > #wrapper");
-	header = $("body > #wrapper > #header-main");
-	navbar = $("body > #wrapper > #navbar-main");
-	content = $("body > #wrapper > #content");
-	footer = $("body > #wrapper > #footer-main");
-	
 	//win.on("resize", onWindowResize);
 	win.on("scroll", onWindowScroll);
 	
