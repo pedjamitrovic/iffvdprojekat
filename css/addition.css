@@ -17,3 +17,28 @@
 .navbar-inverse .container-fluid .navbar-nav a {
     color:rgba(255,255,255,0.75);
 }
+
+@media screen and (min-width: 600px) {
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+}
+
+.img-margin-default {
+	margin-top: 25px;
+	margin-bottom: 25px;
+}
+
+.headings-default-color{
+	color: rgba(0, 0, 0, 0.75);
+}
+
+.carousel-caption{
+	background-color: rgba(255,255,255,0.33);
+	border-radius:100px;
+}
+
+.sponzori-img img:hover{
+	border: 1px solid rgba(0,0,0,0.75);
+	opacity: 0.7;
+}
