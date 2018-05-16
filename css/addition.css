@@ -9,19 +9,13 @@
     display:inline-block;
     vertical-align: middle;
 }
-.navbar-inverse .container-fluid .navbar-nav  a:hover,
-.navbar-inverse .container-fluid .navbar-nav  a:focus {
-    background-color: rgba(255,255,255,0.1); 
-    color: rgb(255,255,255);
+.dropdown-item a:hover,
+.dropdown-item a:focus {
+    background-color: rgba(255,255,255,0.1) !important; 
+    color: rgb(255,255,255) !important;
 }
-.navbar-inverse .container-fluid .navbar-nav a {
-    color:rgba(255,255,255,0.75);
-}
-
-@media screen and (min-width: 600px) {
-.dropdown:hover .dropdown-menu {
-    display: block;
-}
+.dropdown-item a {
+    color:rgba(255,255,255,0.75) !important;
 }
 
 .img-margin-default {

@@ -32,15 +32,27 @@
 		<title>IFF - Filmovi</title>
 		
 		<script type="text/javascript">
-		
+			
 			movies =
 			[
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denyel Washington, Colin Farrell, Carmen Ejogo", "trailers/lawyer.mp4", "...", "122'", "Dan Gilroy", "5", "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denyel Washington, Colin Farrell, Carmen Ejogo", "trailers/lawyer.mp4", "...", "122'", "Dan Gilroy", "5", "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denyel Washington, Colin Farrell, Carmen Ejogo", "trailers/lawyer.mp4", "...", "122'", "Dan Gilroy", "5", "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film")
+				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Action/Crime", "trailers/lawyer.mp4", "...", "2018-04-05", 122, "Dan Gilroy", "5", "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
+				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Action/Crime", "trailers/lawyer.mp4", "...", "2018-03-05", 122, "Dan Gilroy", "5", "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
+				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Action/Crime", "trailers/lawyer.mp4", "...", "2018-04-07", 122, "Dan Gilroy", "5", "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film")
+			];
+			
+			var modes =
+			[
+				function(movie) { return movie.country; },
+				function(movie) { return movie.length; },
+				function(movie) { return movie.genre; },
+				function(movie) { return movie.rating; },
+				function(movie) { return movie.roles; },
+				function(movie) { return movie.date; }
 			];
 			
 			var moviesdiv;
+			var order = "ascending";
+			var index = -1;
 			
 			doc.ready(function()
 			{
@@ -57,7 +69,41 @@
 				for (var i = 0; i < movies.length; i++)
 					moviesdiv.append(movies[i].AsPartialView());
 			}
-		
+			
+			function sort()
+			{
+				if (index >= 0 && index < modes.length)
+				{
+					movies.sort(function(left, right)
+					{
+						var lval = modes[index](left);
+						var rval = modes[index](right);
+						
+						if (order == "ascending")
+						{
+							if (lval < rval) return -1;
+							if (lval > rval) return 1;
+							return 0;
+						}
+						else if (order == "descending")
+						{
+							if (lval < rval) return 1;
+							if (lval > rval) return -1;
+							return 0;
+						}
+					});
+					
+					clear();
+					show();
+				}
+			}
+			
+			function doSort(i)
+			{
+				index = i;
+				sort();
+			}
+			
 		</script>
 	</head>
 	<body class="fillup">
@@ -75,6 +121,23 @@
 						<li class="breadcrumb-item active">IFF</li>
 						<li class="breadcrumb-item active">Filmovi</li>
 					</ul>
+				</div>
+				
+				<div id="sort-selection" class="border-boxed expanded text-center padding-top-sm padding-bottom-sm bg-gray">
+					<ul class="dropdown dropdown-item d-inline-block margin-right-md">
+						<a class="dropdown-toggle cursor-pointer hover-text-decor-none" data-toggle="dropdown" aria-expanded="false"><strong>Redosled <b class="caret"></b></strong></a>
+						<ul class="dropdown-menu" role="menu">
+							<li id="asc" role="presentation" class="dropdown-item active" onclick="order = 'ascending'; $('#sort-selection #asc').addClass('active'); $('#sort-selection #desc').removeClass('active');"><a class="cursor-pointer"><strong>Rastuće</strong></a></li>
+							<li id="desc" role="presentation" class="dropdown-item" onclick="order = 'descending'; $('#sort-selection #desc').addClass('active'); $('#sort-selection #asc').removeClass('active');"><a class="cursor-pointer"><strong>Opadajuće</strong></a></li>
+						</ul>
+					</ul>
+					
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(0);">Država</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(1);">Dužina</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(2);">Žanr</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(3);">Rejting</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(4);">Uloge</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(5);">Datum</button>
 				</div>
 				
 				<div id="movies">

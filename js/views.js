@@ -154,8 +154,10 @@ class MovieView extends View
 		title,
 		director,
 		roles,
+		genre,
 		trailer,
 		description,
+		date,
 		length,
 		direction,
 		rating,
@@ -172,8 +174,10 @@ class MovieView extends View
 		this.title = title;
 		this.director = director;
 		this.roles = roles;
+		this.genre = genre
 		this.trailer = trailer;
 		this.description = description;
+		this.date = date;
 		this.length = length;
 		this.direction = direction;
 		this.rating = rating;
@@ -196,9 +200,9 @@ class MovieView extends View
 				"<div class=\"border-boxed expanded margin-lg\">" +
 					"<img src=\"storage/movies/" + this.title + "/cover.jpg\" width=\"320\" height=\"475\" style=\"float: left;\"/>" +
 					"<div style=\"padding-left: 350px;\">" +
-						"<h3 class=\"font-lg\">" + this.title + "</h3>" +
-						"<h4 class=\"font-md\">" + this.director + "</h4>" +
-						"<table class=\"table table-striped margin-lg\">" +
+						"<h3 class=\"font-md font-times-new-roman\"><b>" + this.title + "</b></h3>" +
+						"<h4 class=\"font-md font-times-new-roman\">" + this.director + "</h4>" +
+						"<table class=\"table table-striped margin-lg margin-top-sm\" style=\"max-width: 80%;\">" +
 							"<thead>" +
 								"<tr>" +
 									"<th scope=\"col\">Detalj</th>" +
@@ -212,7 +216,7 @@ class MovieView extends View
 								"</tr>" +
 								"<tr>" +
 									"<td class=\"text-right\">Trajanje:</td>" +
-									"<td class=\"text-left\">" + this.length + "</td>" +
+									"<td class=\"text-left\">" + this.length + "'</td>" +
 								"</tr>" +
 								"<tr>" +
 									"<td class=\"text-right\">Žanr:</td>" +
@@ -226,10 +230,14 @@ class MovieView extends View
 									"<td class=\"text-right\">Uloge:</td>" +
 									"<td class=\"text-left\">" + this.roles + "</td>" +
 								"</tr>" +
+								"<tr>" +
+									"<td class=\"text-right\">Datum izvođenja:</td>" +
+									"<td class=\"text-left\">" + this.date + "</td>" +
+								"</tr>" +
 							"</tbody>" +
 						"</table>" +
 						"<div>" +
-							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\">Opširnije</button>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\">Opširnije</button>" +
 							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\"><i class=\"glyphicon glyphicon-heart\"></i> Omiljeni</button>" +
 						"</div>" +
 					"</div>" +
