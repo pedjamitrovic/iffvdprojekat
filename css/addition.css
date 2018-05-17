@@ -39,3 +39,15 @@
 
 table.table td.text-right { width: 30%; font-weight: bold; }
 table.table td.text-left { width: 70%; font-style: italic; }
+
+.news-article {
+	background-color: rgba(255,255,255,0.5);
+	background-repeat: no-repeat;
+	border: 1px solid black;
+	border-radius:10px;
+}
+
+.news-article-body{
+	padding-top: 10px;
+	padding-right: 10px;
+}
