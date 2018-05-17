@@ -37,4 +37,5 @@
 	opacity: 0.7;
 }
 
-table.table td.text-right { font-weight: bold; }
+table.table td.text-right { width: 30%; font-weight: bold; }
+table.table td.text-left { width: 70%; font-style: italic; }

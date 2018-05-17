@@ -155,7 +155,6 @@ class MovieView extends View
 		director,
 		roles,
 		genre,
-		trailer,
 		description,
 		date,
 		length,
@@ -174,8 +173,7 @@ class MovieView extends View
 		this.title = title;
 		this.director = director;
 		this.roles = roles;
-		this.genre = genre
-		this.trailer = trailer;
+		this.genre = genre;
 		this.description = description;
 		this.date = date;
 		this.length = length;
@@ -189,9 +187,88 @@ class MovieView extends View
 		this.distributer = distributer;
 	}
 	
+	static FromJSON(text) { var json = JSON.parse(text); return new MovieView (json.country, json.title, json.director, json.roles, json.genre, json.description, json.date, json.length, json.direction, json.rating, json.festivals, json.montage, json.music, json.producer, json.production, json.distributer); }
+	ToJSON() { return JSON.stringify(this); }
+	
 	AsView()
 	{
-		return super.AsView();
+		var stars = "";
+		var i = 0;
+		
+		for (; i < this.rating; i++)
+			stars += "<i class=\"glyphicon glyphicon-star\"></i>";
+		
+		for (; i < 5; i++)
+			stars += "<i class=\"glyphicon glyphicon-star-empty\"></i>";
+		
+		return "" +
+			"<h3>" + this.country + "</h3>" +
+			"<h1>" + this.title + "</h1>" +
+			"<h2>" + this.director + "</h2>" +
+			"<p>Režija: " + this.producer + "</p>" +
+			"<p>Uloge: " + this.roles + "</p>" +
+			"<div>" +
+				stars +
+			"</div>" +
+			"<video width=\"640\" height=\"360\" controls class=\"margin-top-md margin-bottom-md\">" +
+				"<source src=\"storage/movies/" + this.title + "/movie.mp4\" type=\"video/mp4\">" +
+				"<source src=\"storage/movies/" + this.title + "/movie.ogg\" type=\"video/ogg\">" +
+				"Your browser does not support the video tag." +
+			"</video>" +
+			"<p class=\"solid-border-left border-left-md text-justify margin-sm padding-sm\"><b><i>" +
+				this.description +
+			"</i></b></p>" +
+			"<div class=\"border-boxed expanded\">" +
+				"<img src=\"storage/movies/" + this.title + "/cover.jpg\" width=\"320\" height=\"475\" style=\"float: left; padding-bottom: 40px;\"/>" +
+				"<div style=\"padding-left: 350px;\">" +
+					"<table class=\"table table-striped\" style=\"max-width: 80%\">" +
+						"<thead>" +
+							"<tr>" +
+								"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
+								"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+							"</tr>" +
+						"</thead>" +
+						"<tbody>" +
+							"<tr>" +
+								"<td class=\"text-right\">Žanr:</td>" +
+								"<td class=\"text-left\">" + this.genre + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Datum:</td>" +
+								"<td class=\"text-left\">" + this.date + "'</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Dužina:</td>" +
+								"<td class=\"text-left\">" + this.length + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Direkcija:</td>" +
+								"<td class=\"text-left\">" + this.direction + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Festivali:</td>" +
+								"<td class=\"text-left\">" + this.festivals + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Montaža:</td>" +
+								"<td class=\"text-left\">" + this.montage + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Muzika:</td>" +
+								"<td class=\"text-left\">" + this.music + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Produkcija:</td>" +
+								"<td class=\"text-left\">" + this.production + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Distributer:</td>" +
+								"<td class=\"text-left\">" + this.distributer + "</td>" +
+							"</tr>" +
+						"</tbody>" +
+					"</table>" +
+				"</div>" +
+			"</div>";
 	}
 	
 	AsPartialView()
@@ -205,8 +282,8 @@ class MovieView extends View
 						"<table class=\"table table-striped margin-lg margin-top-sm\" style=\"max-width: 80%;\">" +
 							"<thead>" +
 								"<tr>" +
-									"<th scope=\"col\">Detalj</th>" +
-									"<th scope=\"col\">Vrednost</th>" +
+									"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
+									"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
 								"</tr>" +
 							"</thead>" +
 							"<tbody>" +
@@ -237,7 +314,7 @@ class MovieView extends View
 							"</tbody>" +
 						"</table>" +
 						"<div>" +
-							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\">Opširnije</button>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('film.html?movie=" + encodeURIComponent(this.ToJSON()) + "');\">Opširnije</button>" +
 							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\"><i class=\"glyphicon glyphicon-heart\"></i> Omiljeni</button>" +
 						"</div>" +
 					"</div>" +
