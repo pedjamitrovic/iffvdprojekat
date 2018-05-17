@@ -29,52 +29,52 @@
 		<script type="text/javascript" src="js/views.js"></script>
 		
 		<link rel="icon" href="res/favicon.ico">
-		<title>IFF - Filmovi</title>
+		<title>IFF - Glumci</title>
 		
 		<script type="text/javascript">
 			
-			movies =
+			actors =
 			[
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-03-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-07", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film")
+				new ActorView("Colin Farrell", "James", "1976-05-31", "Irska", "Dublin", 2400000, "da", "...", 4, 14, "Oscar"),
+				new ActorView("Colin Farrell", "James", "1976-04-31", "Irska", "Dublin", 2400000, "da", "...", 4, 14, "Oscar"),
+				new ActorView("Colin Farrell", "James", "1976-06-31", "Irska", "Dublin", 2400000, "da", "...", 4, 14, "Oscar"),
 			];
 			
 			var modes =
 			[
-				function(movie) { return movie.country; },
-				function(movie) { return movie.length; },
-				function(movie) { return movie.genre; },
-				function(movie) { return movie.rating; },
-				function(movie) { return movie.roles; },
-				function(movie) { return movie.date; }
+				function(actor) { return actor.country; },
+				function(actor) { return actor.hometown; },
+				function(actor) { return actor.birthdate; },
+				function(actor) { return actor.networth; },
+				function(actor) { return actor.movies; },
+				function(actor) { return actor.married; }
 			];
 			
-			var moviesdiv;
+			var actorsdiv;
 			var order = "ascending";
 			var index = -1;
 			
 			doc.ready(function()
 			{
-				moviesdiv = content.find("div#movies");
+				actorsdiv = content.find("div#actors");
 				show();
 			});
 			
 			function clear()
 			{
-				moviesdiv.html("");
+				actorsdiv.html("");
 			}
 			function show()
 			{
-				for (var i = 0; i < movies.length; i++)
-					moviesdiv.append(movies[i].AsPartialView());
+				for (var i = 0; i < actors.length; i++)
+					actorsdiv.append(actors[i].AsPartialView());
 			}
 			
 			function sort()
 			{
 				if (index >= 0 && index < modes.length)
 				{
-					movies.sort(function(left, right)
+					actors.sort(function(left, right)
 					{
 						var lval = modes[index](left);
 						var rval = modes[index](right);
@@ -119,7 +119,7 @@
 				<div id="nav-path" class="navbar text-center">
 					<ul class="breadcrumb text-center solid-border border-xs no-border-top super-edged" style="background-color:inherit;">
 						<li class="breadcrumb-item active">IFF</li>
-						<li class="breadcrumb-item active">Filmovi</li>
+						<li class="breadcrumb-item active">Glumci</li>
 					</ul>
 				</div>
 				
@@ -133,14 +133,14 @@
 					</ul>
 					
 					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(0);">Država</button>
-					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(1);">Dužina</button>
-					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(2);">Žanr</button>
-					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(3);">Rejting</button>
-					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(4);">Uloge</button>
-					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(5);">Datum</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(1);">Mesto</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(2);">Datum rođenja</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(3);">Bogatstvo</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(4);">Filmovi</button>
+					<button type="button" class="btn btn-default btn-md margin-left-sm super-edged" onclick="doSort(5);">Venčan/a</button>
 				</div>
 				
-				<div id="movies">
+				<div id="actors">
 					
 				</div>
 				<!-- PAGE CONTENT END -->

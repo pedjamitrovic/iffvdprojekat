@@ -29,16 +29,9 @@
 		<script type="text/javascript" src="js/views.js"></script>
 		
 		<link rel="icon" href="res/favicon.ico">
-		<title>IFF - Filmovi</title>
+		<title>IFF - Moji Filmovi</title>
 		
 		<script type="text/javascript">
-			
-			movies =
-			[
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-03-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-07", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film")
-			];
 			
 			var modes =
 			[
@@ -56,6 +49,9 @@
 			
 			doc.ready(function()
 			{
+				for (var i = 0; i < localStorage.length; i++)
+					movies.push(MovieView.FromJSON(localStorage.getItem(localStorage.key(i))));
+				
 				moviesdiv = content.find("div#movies");
 				show();
 			});
@@ -119,7 +115,7 @@
 				<div id="nav-path" class="navbar text-center">
 					<ul class="breadcrumb text-center solid-border border-xs no-border-top super-edged" style="background-color:inherit;">
 						<li class="breadcrumb-item active">IFF</li>
-						<li class="breadcrumb-item active">Filmovi</li>
+						<li class="breadcrumb-item active">Moji Filmovi</li>
 					</ul>
 				</div>
 				

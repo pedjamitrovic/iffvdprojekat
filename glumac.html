@@ -29,18 +29,18 @@
 		<script type="text/javascript" src="js/views.js"></script>
 		
 		<link rel="icon" href="res/favicon.ico">
-		<title>IFF - Film</title>
+		<title>IFF - Glumac</title>
 		
 		<script type="text/javascript">
 			
-			var movie;
+			var actor;
 			
 			doc.ready(function()
 			{
 				var url = new URL(window.location.href);
-				movie = MovieView.FromJSON(url.searchParams.get("movie"));
-				content.find("div#movie").html(movie.AsView());
-				content.find("div#nav-path > ul").append("<li class=\"breadcrumb-item active\">" + movie.title + "</li>");
+				actor = ActorView.FromJSON(url.searchParams.get("actor"));
+				content.find("div#actor").html(actor.AsView());
+				content.find("div#nav-path > ul").append("<li class=\"breadcrumb-item active\">" + actor.name + "</li>");
 			});
 			
 		</script>
@@ -58,11 +58,11 @@
 				<div id="nav-path" class="navbar text-center">
 					<ul class="breadcrumb text-center solid-border border-xs no-border-top super-edged" style="background-color:inherit;">
 						<li class="breadcrumb-item active">IFF</li>
-						<li class="breadcrumb-item"><a class="hover-text-decor-none" href="filmovi.html">Filmovi</a></li>
+						<li class="breadcrumb-item"><a class="hover-text-decor-none" href="glumci.html">Glumci</a></li>
 					</ul>
 				</div>
 				
-				<div id="movie" class="border-boxed expanded text-center font-times-new-roman">
+				<div id="actor" class="border-boxed expanded text-center font-times-new-roman">
 					
 				</div>
 				<!-- PAGE CONTENT END -->

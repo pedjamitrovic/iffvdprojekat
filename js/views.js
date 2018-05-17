@@ -187,7 +187,7 @@ class MovieView extends View
 		this.distributer = distributer;
 	}
 	
-	static FromJSON(text) { var json = JSON.parse(text); return new MovieView (json.country, json.title, json.director, json.roles, json.genre, json.description, json.date, json.length, json.direction, json.rating, json.festivals, json.montage, json.music, json.producer, json.production, json.distributer); }
+	static FromJSON(text) { var json = JSON.parse(text); return new MovieView(json.country, json.title, json.director, json.roles, json.genre, json.description, json.date, json.length, json.direction, json.rating, json.festivals, json.montage, json.music, json.producer, json.production, json.distributer); }
 	ToJSON() { return JSON.stringify(this); }
 	
 	AsView()
@@ -235,11 +235,11 @@ class MovieView extends View
 							"</tr>" +
 							"<tr>" +
 								"<td class=\"text-right\">Datum:</td>" +
-								"<td class=\"text-left\">" + this.date + "'</td>" +
+								"<td class=\"text-left\">" + this.date + "</td>" +
 							"</tr>" +
 							"<tr>" +
 								"<td class=\"text-right\">Dužina:</td>" +
-								"<td class=\"text-left\">" + this.length + "</td>" +
+								"<td class=\"text-left\">" + this.length + "'</td>" +
 							"</tr>" +
 							"<tr>" +
 								"<td class=\"text-right\">Direkcija:</td>" +
@@ -315,7 +315,7 @@ class MovieView extends View
 						"</table>" +
 						"<div>" +
 							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('film.html?movie=" + encodeURIComponent(this.ToJSON()) + "');\">Opširnije</button>" +
-							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\"><i class=\"glyphicon glyphicon-heart\"></i> Omiljeni</button>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-default btn-lg super-edged\" onclick=\"favorite('" + this.title + "', '" + encodeURIComponent(JSON.stringify(this)) + "');\"><i class=\"glyphicon glyphicon-heart\"></i> Omiljeni</button>" +
 						"</div>" +
 					"</div>" +
 				"</div>";
@@ -323,3 +323,168 @@ class MovieView extends View
 }
 
 var movies = [];
+
+var addedFeed = new AlertPopupFeed(Alert.New("success", "Film je uspešno dodat u okviru omiljenih!", true, "modal"));
+var removedFeed = new AlertPopupFeed(Alert.New("danger", "Film je izbačen sa liste omiljenih!", true, "modal"));
+
+doc.ready(function()
+{
+	addedFeed.Subscribe(alertPopup);
+	removedFeed.Subscribe(alertPopup);
+});
+
+function favorite(title, movie)
+{
+	if (localStorage.getItem(title) === null)
+	{
+		localStorage.setItem(title, decodeURIComponent(movie));
+		addedFeed.Show(0);
+	}
+	else
+	{
+		localStorage.removeItem(title);
+		removedFeed.Show(0);
+	}
+}
+
+class ActorView extends View
+{
+	constructor
+	(
+		name,
+		middlename,
+		birthdate,
+		country,
+		hometown,
+		networth,
+		married,
+		description,
+		rating,
+		movies,
+		awards
+	)
+	{
+		super();
+		this.name = name;
+		this.middlename = middlename;
+		this.birthdate = birthdate;
+		this.country = country;
+		this.hometown = hometown;
+		this.networth = networth;
+		this.married = married;
+		this.description = description;
+		this.rating = rating;
+		this.movies = movies;
+		this.awards = awards;
+	}
+	
+	static FromJSON(text) { var json = JSON.parse(text); return new  ActorView(json.name, json.middlename, json.birthdate, json.country, json.hometown, json.networth, json.married, json.description, json.rating, json.movies, json.awards); }
+	ToJSON() { return JSON.stringify(this); }
+	
+	AsView()
+	{
+var stars = "";
+		var i = 0;
+		
+		for (; i < this.rating; i++)
+			stars += "<i class=\"glyphicon glyphicon-star\"></i>";
+		
+		for (; i < 5; i++)
+			stars += "<i class=\"glyphicon glyphicon-star-empty\"></i>";
+		
+		return "" +
+			"<h3>" + this.country + "</h3>" +
+			"<h1>" + this.name + "</h1>" +
+			"<h2>" + this.middlename + "</h2>" +
+			"<p>Mesto: " + this.hometown + "</p>" +
+			"<p>Datum rođenja: " + this.birthdate + "</p>" +
+			"<div>" +
+				stars +
+			"</div>" +
+			"<p class=\"solid-border-left border-left-md text-justify margin-sm padding-sm\"><b><i>" +
+				this.description +
+			"</i></b></p>" +
+			"<div class=\"border-boxed expanded\">" +
+				"<img src=\"storage/actors/" + this.name + "/cover.jpg\" width=\"320\" height=\"475\" style=\"float: left; padding-bottom: 40px;\"/>" +
+				"<div style=\"padding-left: 350px;\">" +
+					"<table class=\"table table-striped\" style=\"max-width: 80%\">" +
+						"<thead>" +
+							"<tr>" +
+								"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
+								"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+							"</tr>" +
+						"</thead>" +
+						"<tbody>" +
+							"<tr>" +
+								"<td class=\"text-right\">Bogatstvo:</td>" +
+								"<td class=\"text-left\">" + this.networth + "$</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Venčan/a:</td>" +
+								"<td class=\"text-left\">" + this.married + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Filmovi:</td>" +
+								"<td class=\"text-left\">" + this.movies + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Nagrade:</td>" +
+								"<td class=\"text-left\">" + this.awards + "</td>" +
+							"</tr>" +
+						"</tbody>" +
+					"</table>" +
+				"</div>" +
+			"</div>";
+	}
+	
+	AsPartialView()
+	{
+		return "" +
+			"<div class=\"border-boxed expanded margin-lg\">" +
+				"<img src=\"storage/actors/" + this.name + "/cover.jpg\" width=\"320\" height=\"475\" style=\"float: left;\"/>" +
+				"<div style=\"padding-left: 350px;\">" +
+					"<h3 class=\"font-md font-times-new-roman\"><b>" + this.name + "</b></h3>" +
+					"<h4 class=\"font-md font-times-new-roman\">" + this.middlename + "</h4>" +
+					"<table class=\"table table-striped margin-lg margin-top-sm\" style=\"max-width: 80%;\">" +
+						"<thead>" +
+							"<tr>" +
+								"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
+								"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+							"</tr>" +
+						"</thead>" +
+						"<tbody>" +
+							"<tr>" +
+								"<td class=\"text-right\">Država:</td>" +
+								"<td class=\"text-left\">" + this.country + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Mesto:</td>" +
+								"<td class=\"text-left\">" + this.hometown + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Datum rođenja:</td>" +
+								"<td class=\"text-left\">" + this.birthdate + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Bogatstvo:</td>" +
+								"<td class=\"text-left\">" + this.networth + "$</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Filmovi:</td>" +
+								"<td class=\"text-left\">" + this.movies + "</td>" +
+							"</tr>" +
+							"<tr>" +
+								"<td class=\"text-right\">Venčan/a:</td>" +
+								"<td class=\"text-left\">" + this.married + "</td>" +
+							"</tr>" +
+						"</tbody>" +
+					"</table>" +
+					"<div>" +
+						"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('glumac.html?actor=" + encodeURIComponent(this.ToJSON()) + "');\">Opširnije</button>" +
+					"</div>" +
+				"</div>" +
+			"</div>";
+	}
+}
+
+var actors = [];
