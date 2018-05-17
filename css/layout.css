@@ -23,6 +23,8 @@ body { background-color: #eaeaea; }
 .expanded { width: 100%; }
 .fillup { height: 100%; }
 
+.expanded-70 { width: 70%; }
+
 .valign-baseline { vertical-align: baseline; }
 .valign-sub { vertical-align: sub; }
 .valign-super { vertical-align: super; }
