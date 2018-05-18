@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		
+		<meta name="author" content="Predrag Mitrović & Vladimir Sivčev">
+		<meta name="description" content="Internacionalni filmski festival">
+		
+		<link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css">
+		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<!--<script type="text/javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>-->
+		<script type="text/javascript" src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Indie+Flower">
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Rammetto+One">
+		<link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Cookie">
+		
+		<link rel="stylesheet" type="text/css" href="css/utility.css">
+		<link rel="stylesheet" type="text/css" href="css/addition.css">
+		<link rel="stylesheet" type="text/css" href="css/layout.css">
+		<link rel="stylesheet" type="text/css" href="css/stylization.css">
+		<script type="text/javascript" src="js/config.js"></script>
+		<script type="text/javascript" src="style-js/utility.style.js"></script>
+		<script type="text/javascript" src="style-js/fixed-dynamic.style.js"></script>
+		<script type="text/javascript" src="js/popups.js"></script>
+		<script type="text/javascript" src="js/views.js"></script>
+		
+		<link rel="icon" href="res/favicon.ico">
+		<title>IFF - Movie</title>
+		
+		<script type="text/javascript">
+			
+			var movie;
+			var invalidPhone = new AlertPopupFeed(Alert.New("danger", "<b>Greška!</b> Telefon nije validan.", true, "modal"));
+			var invalidEmail = new AlertPopupFeed(Alert.New("danger", "<b>Greška!</b> E-pošta nije validna.", true, "modal"));
+			var reservationSuccess = new AlertPopupFeed(Alert.New("success", "<b>Rezervacija uspešna!</b>", true, "modal"));
+			
+			doc.ready(function()
+			{
+				var url = new URL(window.location.href);
+				movie = MovieView.FromJSON(url.searchParams.get("movie"));
+				content.find("div#movie").html(movie.AsView());
+				content.find("div#nav-path > ul").append("<li class=\"breadcrumb-item active\">" + movie.title + "</li>");
+				
+				invalidPhone.Subscribe(alertPopup);
+				invalidEmail.Subscribe(alertPopup);
+				reservationSuccess.Subscribe(alertPopup);
+			});
+			
+			
+			
+			function reserve(firstname, lastname, phone, email)
+			{
+				if (phone.match(/^(\+\d\d\d \d\d\/\d\d-\d\d-\d\d\d)$/) == null)
+				{
+					invalidPhone.Show(0);
+					return;
+				}
+				
+				if (email.match(/^(((\w)+\.?)+@((\w)+\.?)+)$/) == null)
+				{
+					invalidEmail.Show(0);
+					return;
+				}
+				
+				reservationSuccess.Show(0);
+			}
+			
+		</script>
+	</head>
+	<body class="fillup">
+		<div id="wrapper" class="border-boxed expanded fillup">
+			<div id="top-content-fixed" class="border-boxed expanded p-fixed on-top">
+				<header id="header-fixed" class="border-boxed expanded p-fixed top-trans-fast"></header>
+			</div>
+			<header id="header-main" class="border-boxed expanded"></header>
+			<nav id="navbar-main" class="navbar navbar-inverse center"></nav>
+			<div id="content" class="container">
+				
+				<!-- PAGE CONTENT START -->
+				<div id="nav-path" class="navbar text-center">
+					<ul class="breadcrumb text-center solid-border border-xs no-border-top super-edged" style="background-color:inherit;">
+						<li class="breadcrumb-item active">IFF</li>
+						<li class="breadcrumb-item"><a class="hover-text-decor-none" href="filmovi_eng.html">Movies</a></li>
+					</ul>
+				</div>
+				
+				<div id="movie" class="border-boxed expanded text-center font-times-new-roman">
+					
+				</div>
+				
+				<div id="location" class="border-boxed expanded font-times-new-roman margin-top-lg">
+					<h3>Place of projection:</h3>
+					<div id="map" class="border-boxed expanded solid-border border-xs border-gray rounded-xxs" style="height:500px"></div>
+					<script>function initMap() { var mapCanvas = document.getElementById("map"); var mapCenter = new google.maps.LatLng(44.805468, 20.4758449); var mapOptions = { center: mapCenter, zoom: 10, mapTypeId: google.maps.MapTypeId.HYBRID }; var map = new google.maps.Map(mapCanvas, mapOptions); var marker = new google.maps.Marker({ position: mapCenter, animation: google.maps.Animation.BOUNCE }); marker.setMap(map); }</script>
+					<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCTmjv_17LFv0zZRK8TKPEY8Pghk_x2h0I&callback=initMap" type="text/javascript"></script>
+				</div>
+				
+				<center>
+					<div id="reservation" class="jumbotron margin-lg font-times-new-roman">
+						<h2>Book your ticket now!</h2>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-font"></i></span>
+							<input id="reserve-firstname" type="text" class="form-control" name="reserve-firstname" placeholder="Name">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-bold"></i></span>
+							<input id="reserve-lastname" type="text" class="form-control" name="reserve-lastname" placeholder="Surname">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-phone"></i></span>
+							<input id="reserve-phone" type="text" class="form-control" name="reserve-phone" placeholder="Phone (example +381 69/42-41-506)">
+						</div>
+						<div class="input-group">
+							<span class="input-group-addon"><i class="glyphicon glyphicon-envelope"></i></span>
+							<input id="reserve-email" type="email" class="form-control" name="reserve-email" placeholder="E-mail (example vladimirsi@nordeus.com)">
+						</div>
+						<button type="button" class="btn btn-success btn-md margin-top-md" onclick="reserve($('div#reservation input#reserve-firstname')[0].value, $('div#reservation input#reserve-lastname')[0].value, $('div#reservation input#reserve-phone')[0].value, $('div#reservation input#reserve-email')[0].value);">Reserviši</button>
+					</div>
+				</center>
+				<!-- PAGE CONTENT END -->
+				
+			</div>
+			<footer id="footer-main" class="border-boxed expanded"></footer>
+		</div>
+	</body>
+</html>
