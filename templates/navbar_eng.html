@@ -1,0 +1,33 @@
+				<script type="text/javascript">
+					$("div#navbar ul.nav li.dropdown").hover
+					(
+						function() { $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeIn(500); },
+						function() { $(this).find(".dropdown-menu").stop(true, true).delay(200).fadeOut(500); }
+					);
+				</script>
+				
+				<div id="navbar" class="container-fluid">
+					<ul class="nav navbar-nav navbar-center">
+						<li><a href="index_eng.html"><strong>Home</strong></a></li>
+						<li class="dropdown dropdown-item">
+							<a class="dropdown-toggle" aria-expanded="false" href="kratkaistorija_eng.html"><strong>About<b class="caret"></b></strong></a>
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation" class="dropdown-item"><a href="ziri_eng.html"><strong>Jury</strong></a></li>
+								<li role="presentation" class="dropdown-item"><a href="nagrade_eng.html"><strong>Awards</strong></a></li>
+								<li role="presentation" class="dropdown-item"><a href="sponzori_eng.html"><strong>Sponsors</strong></a></li>
+								<li role="presentation" class="dropdown-item"><a href="kontakt_eng.html"><strong>Contact</strong></a></li>
+							</ul>
+						</li>
+						<li class="dropdown dropdown-item">
+							<a class="dropdown-toggle" aria-expanded="false" href="filmovi_eng.html"><strong>Programme<b class="caret"></b></strong></a>
+							<ul class="dropdown-menu" role="menu">
+								<li role="presentation" class="dropdown-item"><a href="mestaprojekcija_eng.html"><strong>Cinemas</strong></a></li>
+								<li role="presentation" class="dropdown-item"><a href="prodajnamesta_eng.html"><strong>Marketplaces</strong></a></li>
+							</ul>
+						</li>
+						<li><a href="glumci_eng.html"><strong>Actors</strong></a></li>
+						<li><a href="vesti_eng.html"><strong>News</strong></a></li>
+						<li><a href="galerija_eng.html"><strong>Gallery</strong></a></li>
+						<li><a href="mojifilmovi_eng.html"><strong>My Movies</strong></a></li>
+					</ul>
+				</div>

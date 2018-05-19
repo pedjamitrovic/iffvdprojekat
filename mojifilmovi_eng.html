@@ -29,16 +29,9 @@
 		<script type="text/javascript" src="js/views.js"></script>
 		
 		<link rel="icon" href="res/favicon2.ico">
-		<title>IFF - Movies</title>
+		<title>IFF - My Movies</title>
 		
 		<script type="text/javascript">
-			
-			movies =
-			[
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-03-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-07", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film")
-			];
 			
 			var modes =
 			[
@@ -56,6 +49,9 @@
 			
 			doc.ready(function()
 			{
+				for (var i = 0; i < localStorage.length; i++)
+					movies.push(MovieView.FromJSON(localStorage.getItem(localStorage.key(i))));
+				
 				moviesdiv = content.find("div#movies");
 				show();
 			});
@@ -119,7 +115,7 @@
 				<div id="nav-path" class="navbar text-center">
 					<ul class="breadcrumb text-center solid-border border-xs no-border-top super-edged" style="background-color:inherit;">
 						<li class="breadcrumb-item active">IFF</li>
-						<li class="breadcrumb-item active">Movies</li>
+						<li class="breadcrumb-item active">My Movies</li>
 					</ul>
 				</div>
 				
@@ -127,8 +123,8 @@
 					<ul class="dropdown dropdown-item d-inline-block margin-right-md">
 						<a class="dropdown-toggle cursor-pointer hover-text-decor-none" data-toggle="dropdown" aria-expanded="false"><strong>Order <b class="caret"></b></strong></a>
 						<ul class="dropdown-menu" role="menu">
-							<li id="asc" role="presentation" class="dropdown-item active" onclick="order = 'ascending'; $('#sort-selection #asc').addClass('active'); $('#sort-selection #desc').removeClass('active');"><a class="cursor-pointer"><strong>Ascending</strong></a></li>
-							<li id="desc" role="presentation" class="dropdown-item" onclick="order = 'descending'; $('#sort-selection #desc').addClass('active'); $('#sort-selection #asc').removeClass('active');"><a class="cursor-pointer"><strong>Descending</strong></a></li>
+							<li id="asc" role="presentation" class="dropdown-item active" onclick="order = 'ascending'; $('#sort-selection #asc').addClass('active'); $('#sort-selection #desc').removeClass('active');"><a class="cursor-pointer"><strong>Rastuće</strong></a></li>
+							<li id="desc" role="presentation" class="dropdown-item" onclick="order = 'descending'; $('#sort-selection #desc').addClass('active'); $('#sort-selection #asc').removeClass('active');"><a class="cursor-pointer"><strong>Opadajuće</strong></a></li>
 						</ul>
 					</ul>
 					
