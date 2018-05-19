@@ -35,9 +35,9 @@
 			
 			movies =
 			[
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-03-05", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film"),
-				new MovieView("SAD", "Lawyer", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "...", "2018-04-07", 122, "Dan Gilroy", 5, "2017 Toronto / Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film")
+				new MovieView("SAD", "Advokat", "Roman J. Israel, ESQ.", "Denzel Washington, Colin Farrell, Carmen Ejogo", "Akcija / Krimi", "Roman J. Izrael, pobednički, idealistički advokat, nalazi se u burnoj seriji događaja koji dovode do krize i neophodnosti ekstremne akcije.", "2018-06-26", 122, "Dan Gilroy", 5, "2017 Toronto International Film Festival", "John Gilroy", "James Newton Howard", "Jennifer Fox, Todd Black, Denzel Washington", "Bron Studios, Cross Creek Pictures, Culture China - Image Nation Abu Dhabi Fund, Escape Artists, Imagenation Abu Dhabi FZ, LStar Capital, MACRO, Topic Studios", "Con Film", "https://www.youtube.com/embed/CItEtnp3nPY?rel=0"),
+				new MovieView("Hrvatska", "Agape", "Agape", "Goran Bogdan, Pavle Čemerikić, Denis Murić, Ivo Gregurević", "Drama", "Miran je nekonvencionalni sveštenik koji priprema decu za ceremoniju potvrde. Jedan od njih je Goran, siroče tinejdžer koji uživa u Miranovoj pažnji. Jednog dana, novi dečak dolazi u komšiluk i odmah postaje Miranov novi učenik ljubimac. Goran postaje ljubomoran i priznaje da je u seksualnom odnosu sa sveštenikom, što pokreće niz nesrećnih događaja.", "2018-07-01", 90, "Branko Schmidt", 4, "2017 Mumbai Film Festival", "Hrvoje Mršić", "Stanislav Babić", "Jennifer Fox, Todd Black, Denzel Washington", "Telefilm", "Soul Food", "https://www.youtube.com/embed/uARdwY0rqRU?rel=0"),
+				new MovieView("Velika Britanija", "Apostazija", "Apostasy", "Siobhan Finneran, Sacha Parkinson, Molly Wright, Robert Emms", "Drama", "Devojka koja je veran Jehovin svedok je primorana da izbegava svoju sestru zbog verskog prekršaja. Kako se razdvaja od nje, počinje da dovodi u pitanje značenje Božje ljubavi.", "2018-07-03", 105, "Daniel Kokotajlo", 3, "2017 London Film Festival", "Andrea Cornwell", "Matthew Wilcock", " Daniel Kokotajlo", "Frank & Lively s, Saddleworth Films", "-", "https://www.youtube.com/embed/EJmuUNw9v-A?rel=0")
 			];
 			
 			var modes =
@@ -66,8 +66,13 @@
 			}
 			function show()
 			{
-				for (var i = 0; i < movies.length; i++)
+				for (var i = 0; i < movies.length; i++){
 					moviesdiv.append(movies[i].AsPartialView());
+					if (localStorage.getItem(movies[i].title) != null)
+					{
+						$("#"+movies[i].title).html('Izbaci iz mojih filmova');
+					}
+				}
 			}
 			
 			function sort()

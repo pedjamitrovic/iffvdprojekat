@@ -58,3 +58,7 @@ table.table td.text-left { width: 70%; font-style: italic; }
 	margin-top: 10px;
 	margin-bottom: 10px;
 }
+
+#sort-selection{
+	background-color: rgba(0, 0, 0, 0.75);
+}

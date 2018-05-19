@@ -62,8 +62,15 @@
 			}
 			function show()
 			{
-				for (var i = 0; i < movies.length; i++)
-					moviesdiv.append(movies[i].AsPartialView());
+				if(movies.length != 0){
+					for (var i = 0; i < movies.length; i++){
+						moviesdiv.append(movies[i].AsPartialView());
+						$("#"+movies[i].title).html('Izbaci iz mojih filmova');
+					}
+				}
+				else{
+					moviesdiv.append("<br><br><br><br><br><center><h4 class=\"font-times-new-roman opacity-8 headings-default-color\">Trenutno nemate omiljenih filmova.</h4></center><br><br><br><br><br>");
+				}
 			}
 			
 			function sort()
@@ -119,7 +126,7 @@
 					</ul>
 				</div>
 				
-				<div id="sort-selection" class="border-boxed expanded text-center padding-top-sm padding-bottom-sm bg-gray">
+				<div id="sort-selection" class="border-boxed expanded text-center padding-top-sm padding-bottom-sm">
 					<ul class="dropdown dropdown-item d-inline-block margin-right-md">
 						<a class="dropdown-toggle cursor-pointer hover-text-decor-none" data-toggle="dropdown" aria-expanded="false"><strong>Redosled <b class="caret"></b></strong></a>
 						<ul class="dropdown-menu" role="menu">

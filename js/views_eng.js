@@ -207,8 +207,8 @@ class MovieView extends View
 			"<h3>" + this.country + "</h3>" +
 			"<h1>" + this.title + "</h1>" +
 			"<h2>" + this.director + "</h2>" +
-			"<p>Režija: " + this.producer + "</p>" +
-			"<p>Uloge: " + this.roles + "</p>" +
+			"<p>Producer: " + this.producer + "</p>" +
+			"<p>Actors: " + this.roles + "</p>" +
 			"<div>" +
 				stars +
 			"</div>" +
@@ -222,41 +222,41 @@ class MovieView extends View
 					"<table class=\"table table-striped\" style=\"max-width: 80%\">" +
 						"<thead>" +
 							"<tr>" +
-								"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
-								"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+								"<th scope=\"col\" class=\"text-right\">Detail:</th>" +
+								"<th scope=\"col\" class=\"text-left\">Value</th>" +
 							"</tr>" +
 						"</thead>" +
 						"<tbody>" +
 							"<tr>" +
-								"<td class=\"text-right\">Žanr:</td>" +
+								"<td class=\"text-right\">Genre:</td>" +
 								"<td class=\"text-left\">" + this.genre + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Datum:</td>" +
+								"<td class=\"text-right\">Date of projection:</td>" +
 								"<td class=\"text-left\">" + this.date + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Dužina:</td>" +
+								"<td class=\"text-right\">Length:</td>" +
 								"<td class=\"text-left\">" + this.length + "'</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Direkcija:</td>" +
+								"<td class=\"text-right\">Director:</td>" +
 								"<td class=\"text-left\">" + this.direction + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Festivali:</td>" +
+								"<td class=\"text-right\">Festivals:</td>" +
 								"<td class=\"text-left\">" + this.festivals + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Montaža:</td>" +
+								"<td class=\"text-right\">Montage:</td>" +
 								"<td class=\"text-left\">" + this.montage + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Muzika:</td>" +
+								"<td class=\"text-right\">Music:</td>" +
 								"<td class=\"text-left\">" + this.music + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Produkcija:</td>" +
+								"<td class=\"text-right\">Production:</td>" +
 								"<td class=\"text-left\">" + this.production + "</td>" +
 							"</tr>" +
 							"<tr>" +
@@ -280,40 +280,40 @@ class MovieView extends View
 						"<table class=\"table table-striped margin-lg margin-top-sm\" style=\"max-width: 80%;\">" +
 							"<thead>" +
 								"<tr>" +
-									"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
-									"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+									"<th scope=\"col\" class=\"text-right\">Detail:</th>" +
+									"<th scope=\"col\" class=\"text-left\">Value</th>" +
 								"</tr>" +
 							"</thead>" +
 							"<tbody>" +
 								"<tr>" +
-									"<td class=\"text-right\">Država:</td>" +
+									"<td class=\"text-right\">Country:</td>" +
 									"<td class=\"text-left\">" + this.country + "</td>" +
 								"</tr>" +
 								"<tr>" +
-									"<td class=\"text-right\">Trajanje:</td>" +
+									"<td class=\"text-right\">Length:</td>" +
 									"<td class=\"text-left\">" + this.length + "'</td>" +
 								"</tr>" +
 								"<tr>" +
-									"<td class=\"text-right\">Žanr:</td>" +
+									"<td class=\"text-right\">Genre:</td>" +
 									"<td class=\"text-left\">" + this.genre + "</td>" +
 								"</tr>" +
 								"<tr>" +
-									"<td class=\"text-right\">Rejting:</td>" +
+									"<td class=\"text-right\">Rating:</td>" +
 									"<td class=\"text-left\">" + this.rating + "</td>" +
 								"</tr>" +
 								"<tr>" +
-									"<td class=\"text-right\">Uloge:</td>" +
+									"<td class=\"text-right\">Actors:</td>" +
 									"<td class=\"text-left\">" + this.roles + "</td>" +
 								"</tr>" +
 								"<tr>" +
-									"<td class=\"text-right\">Datum izvođenja:</td>" +
+									"<td class=\"text-right\">Date of projection:</td>" +
 									"<td class=\"text-left\">" + this.date + "</td>" +
 								"</tr>" +
 							"</tbody>" +
 						"</table>" +
 						"<div>" +
-							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('film.html?movie=" + encodeURIComponent(this.ToJSON()) + "');\">Opširnije</button>" +
-							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" id=\"" + this.title + "\" class=\"btn btn-default btn-lg super-edged\" onclick=\"favorite('" + this.title + "', '" + encodeURIComponent(JSON.stringify(this)) + "');\"><i class=\"glyphicon glyphicon-heart\"></i> Dodaj u moje filmove</button>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('film_eng.html?movie=" + encodeURIComponent(this.ToJSON()) + "');\">Read more</button>" +
+							"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" id=\"" + this.title + "\" class=\"btn btn-default btn-lg super-edged\" onclick=\"favorite('" + this.title + "', '" + encodeURIComponent(JSON.stringify(this)) + "');\"><i class=\"glyphicon glyphicon-heart\"></i> Add to My Movies</button>" +
 						"</div>" +
 					"</div>" +
 				"</div>";
@@ -322,8 +322,8 @@ class MovieView extends View
 
 var movies = [];
 
-var addedFeed = new AlertPopupFeed(Alert.New("success", "Film je uspešno dodat u okviru omiljenih!", true, "modal"));
-var removedFeed = new AlertPopupFeed(Alert.New("danger", "Film je izbačen sa liste omiljenih!", true, "modal"));
+var addedFeed = new AlertPopupFeed(Alert.New("success", "Film successfuly added to My Movies!", true, "modal"));
+var removedFeed = new AlertPopupFeed(Alert.New("danger", "Film successfuly removed from My Movies!", true, "modal"));
 
 doc.ready(function()
 {
@@ -337,16 +337,16 @@ function favorite(title, movie)
 	{
 		localStorage.setItem(title, decodeURIComponent(movie));
 		addedFeed.Show(0);
-		$("#"+title).html('Izbaci iz mojih filmova');
+		$("#"+title).html('Remove from My Movies');
 	}
 	else
 	{
 		localStorage.removeItem(title);
 		removedFeed.Show(0);
-		$("#"+title).html("<i class=\"glyphicon glyphicon-heart\"></i> Dodaj u moje filmove");
+		$("#"+title).html("<i class=\"glyphicon glyphicon-heart\"></i> Add to My Movies");
 	}
 	var fileName = location.href.split("/").slice(-1); 
-	if(fileName == "mojifilmovi.html") {
+	if(fileName == "mojifilmovi_eng.html") {
 		setTimeout(function() { window.location.reload(); }, 1500);
 	}
 }
@@ -400,8 +400,8 @@ var stars = "";
 			"<h3>" + this.country + "</h3>" +
 			"<h1>" + this.name + "</h1>" +
 			"<h2>" + this.middlename + "</h2>" +
-			"<p>Mesto: " + this.hometown + "</p>" +
-			"<p>Datum rođenja: " + this.birthdate + "</p>" +
+			"<p>Birthplace: " + this.hometown + "</p>" +
+			"<p>Date of Birth: " + this.birthdate + "</p>" +
 			"<div>" +
 				stars +
 			"</div>" +
@@ -414,25 +414,25 @@ var stars = "";
 					"<table class=\"table table-striped\" style=\"max-width: 80%\">" +
 						"<thead>" +
 							"<tr>" +
-								"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
-								"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+								"<th scope=\"col\" class=\"text-right\">Detail:</th>" +
+								"<th scope=\"col\" class=\"text-left\">Value</th>" +
 							"</tr>" +
 						"</thead>" +
 						"<tbody>" +
 							"<tr>" +
-								"<td class=\"text-right\">Bogatstvo:</td>" +
+								"<td class=\"text-right\">Net worth:</td>" +
 								"<td class=\"text-left\">" + this.networth + "$</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Venčan/a:</td>" +
+								"<td class=\"text-right\">Marriage status:</td>" +
 								"<td class=\"text-left\">" + this.married + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Filmovi:</td>" +
+								"<td class=\"text-right\">Movies:</td>" +
 								"<td class=\"text-left\">" + this.movies + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Nagrade:</td>" +
+								"<td class=\"text-right\">Awards:</td>" +
 								"<td class=\"text-left\">" + this.awards + "</td>" +
 							"</tr>" +
 						"</tbody>" +
@@ -452,39 +452,39 @@ var stars = "";
 					"<table class=\"table table-striped margin-lg margin-top-sm\" style=\"max-width: 80%;\">" +
 						"<thead>" +
 							"<tr>" +
-								"<th scope=\"col\" class=\"text-right\">Detalj:</th>" +
-								"<th scope=\"col\" class=\"text-left\">Vrednost</th>" +
+								"<th scope=\"col\" class=\"text-right\">Detail:</th>" +
+								"<th scope=\"col\" class=\"text-left\">Value:</th>" +
 							"</tr>" +
 						"</thead>" +
 						"<tbody>" +
 							"<tr>" +
-								"<td class=\"text-right\">Država:</td>" +
+								"<td class=\"text-right\">Country:</td>" +
 								"<td class=\"text-left\">" + this.country + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Mesto:</td>" +
+								"<td class=\"text-right\">Birthplace:</td>" +
 								"<td class=\"text-left\">" + this.hometown + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Datum rođenja:</td>" +
+								"<td class=\"text-right\">Date of Birth:</td>" +
 								"<td class=\"text-left\">" + this.birthdate + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Bogatstvo:</td>" +
+								"<td class=\"text-right\">Net worth:</td>" +
 								"<td class=\"text-left\">" + this.networth + "$</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Filmovi:</td>" +
+								"<td class=\"text-right\">Movies:</td>" +
 								"<td class=\"text-left\">" + this.movies + "</td>" +
 							"</tr>" +
 							"<tr>" +
-								"<td class=\"text-right\">Venčan/a:</td>" +
+								"<td class=\"text-right\">Marriage status:</td>" +
 								"<td class=\"text-left\">" + this.married + "</td>" +
 							"</tr>" +
 						"</tbody>" +
 					"</table>" +
 					"<div>" +
-						"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('glumac.html?actor=" + encodeURIComponent(this.ToJSON()) + "');\">Opširnije</button>" +
+						"&emsp;&emsp;&emsp;&emsp;<button type=\"button\" class=\"btn btn-danger btn-lg super-edged\" onclick=\"window.location.replace('glumac_eng.html?actor=" + encodeURIComponent(this.ToJSON()) + "');\">Read more</button>" +
 					"</div>" +
 				"</div>" +
 			"</div>";
